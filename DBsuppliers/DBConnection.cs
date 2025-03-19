@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace DBsuppliers.VMTools
+namespace DBsuppliers
 {
-    public class DBConnection
+    public class DbConnection
     {
         MySqlConnection _connection;
 
@@ -32,7 +32,6 @@ namespace DBsuppliers.VMTools
         {
             if (_connection == null)
                 Config();
-
             try
             {
                 _connection.Open();
@@ -61,10 +60,20 @@ namespace DBsuppliers.VMTools
             }
         }
 
-        internal void SetConnection(SuppliersDB supplerDB)
+        internal MySqlCommand CreateCommand(string sql)
         {
-            Config();
-            supplerDB.SetConnection(_connection);
+            return new MySqlCommand(sql, _connection);
         }
+
+
+        static DbConnection dbConnection;
+        public static DbConnection GetDbConnection()
+        {
+            if (dbConnection == null)
+                dbConnection = new DbConnection();
+            return dbConnection;
+        }
+
+
     }
 }

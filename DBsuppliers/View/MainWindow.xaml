@@ -11,12 +11,12 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView ItemsSource="{Binding Suppliers}" Grid.Column="1">
+        <ListView ItemsSource="{Binding Suppliers}" SelectedItem="{Binding SelectedSuplier}" Grid.Column="1">
             <ListView.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Добавить" Command="{Binding}"/>
-                    <MenuItem Header="Редоктировать" Command="{Binding}"/>
-                    <MenuItem Header="Удалить" Command="{Binding}"/>
+                    <MenuItem Header="Добавить" Command="{Binding Add}"/>
+                    <MenuItem Header="Редоктировать" Command="{Binding Edit}"/>
+                    <MenuItem Header="Удалить" Command="{Binding Remove}"/>
                 </ContextMenu>
             </ListView.ContextMenu>
             <ListView.View>
@@ -29,11 +29,11 @@
         </ListView>
         <StackPanel>
             <TextBlock Text="Имя" Margin="5"/>
-            <TextBox Width="150" Margin="5"/>
+            <TextBox Text="{Binding Title}" Width="150" Margin="5"/>
             <TextBlock Text="Адрес" Width="150" Margin="5"/>
-            <TextBox Width="150" Margin="5"/>
+            <TextBox Text="{Binding Address}" Width="150" Margin="5"/>
             <TextBlock Text="Телефон" Width="150" Margin="5"/>
-            <TextBox Width="150" Margin="5"/>
+            <TextBox Text="{Binding Phone}" Width="150" Margin="5"/>
         </StackPanel>
     </Grid>
 </Window>
